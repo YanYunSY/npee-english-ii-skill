@@ -143,7 +143,9 @@ $npee-english-ii-skill 开始训练
 ```
 
 该文件用于在不同对话或平台间保留学习状态。
+
 用户可选择在同一对话下不断练习更新learning-state.md；
+
 也可选择保存learning-state.md并将其保存复制到其他对话或其他agent进行训练。
 
 ---
