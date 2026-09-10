@@ -1,122 +1,169 @@
-# Kaoyan English II Assistant Skill
+# 考研英语二长难句写作训练 Skill
 
-面向考研英语二学习者的自适应英语学习 Skill。
+## Skill 简介
 
-当前聚焦：
+面向 **考研英语二** 的 AI 学习 Skill。
+
+支持：
 
 - 长难句翻译
-- 写作
-- 词汇语境训练
-- 语法与句法讲解
+- 写作批改
+- 词汇与语法训练
 - 错误追踪
 - 阶段性诊断
 
-当前不包含完整阅读理解、完形填空和新题型专项。
+暂不包含完整阅读理解、完形填空和新题型专项。
 
-## 为什么这个 Skill 不依赖“模型记忆”
+如已有学习状态记录，直接上传并继续使用；如没有，可直接开始训练，后续通过 `整理` 生成学习状态文件。
 
-Skill 把学习状态显式存放在 `learning-state.md` 中，而不是要求模型长期“记住”某个词是否出错过。
+---
 
-推荐工作流：
+## 安装方法
 
-> 训练 → 批改 → 整理 → 更新 learning-state.md → 下次继续读取
+### 下载 ZIP
 
-这样即使更换聊天、模型或平台，也能继续使用同一份学习状态。
+1. 点击 **Code**
+2. 选择 **Download ZIP**
+3. 解压文件
 
-## 仓库结构
+无需安装 Git 或其他开发工具。
+
+### Git
+
+```bash
+git clone https://github.com/YanYunSY/kaoyan-english-2-skill.git
+```
+
+---
+
+## 在 ChatGPT 中使用
+
+新建 Project，并上传：
+
+```text
+SKILL.md
+references/
+examples/
+templates/
+```
+
+如已有自己的学习状态文件，同时上传该文件。
+
+随后输入：
+
+```text
+开始训练
+```
+
+完成训练后可输入：
+
+```text
+整理
+```
+
+用于生成或更新学习状态记录。
+
+---
+
+## 在 Claude 中使用
+
+新建 Project，并添加：
+
+```text
+SKILL.md
+references/
+examples/
+templates/
+```
+
+如已有学习状态文件，同时添加。
+
+将 `SKILL.md` 作为主要训练规则使用，即可开始训练。
+
+---
+
+## 在 Codex 中使用
+
+将仓库克隆或下载到本地：
+
+```bash
+git clone https://github.com/YanYunSY/kaoyan-english-2-skill.git
+```
+
+在 Codex 中打开项目目录，并让 Codex 读取：
+
+```text
+SKILL.md
+references/
+examples/
+templates/
+```
+
+如已有学习状态文件，将其放入项目或一并提供。
+
+---
+
+## 在 DeepSeek Harness 中使用
+
+将仓库下载或克隆到本地，并作为工作目录或指令来源加载。
+
+确保 Harness 可以读取：
+
+```text
+SKILL.md
+references/
+examples/
+templates/
+```
+
+如已有学习状态文件，同时提供该文件。
+
+---
+
+## 常用指令
+
+```text
+开始训练
+下一组
+继续
+讲一下这句
+整理
+给我写作题
+批改一下
+```
+
+---
+
+## learning-state.md
+
+用于记录：
+
+- 词汇问题
+- 语法问题
+- 翻译错误
+- 写作问题
+- 学习进度
+
+工作流程：
+
+```text
+训练 → 批改 → 整理 → 更新 learning-state.md → 继续训练
+```
+
+该文件用于在不同对话或平台间保留学习状态。
+
+---
+
+## 项目结构
 
 ```text
 kaoyan-english-2-skill/
 ├── README.md
 ├── SKILL.md
-├── LICENSE
 ├── templates/
-│   └── learning-state.md
 ├── references/
-│   ├── error-taxonomy.md
-│   ├── progression-algorithm.md
-│   ├── sentence-selection.md
-│   └── vocabulary-strategy.md
 └── examples/
-    ├── translation-training.md
-    ├── translation-review.md
-    ├── vocabulary-review.md
-    ├── stage-summary.md
-    ├── explain-sentence.md
-    └── writing-review.md
 ```
-
-## 核心机制
-
-### 1. 显式学习状态
-
-记录：
-
-- 词 / 搭配 / 结构 / 写作问题
-- 状态：`new / unstable / mastered`
-- 错误次数
-- 连续正确次数
-- 最近错误 / 正确日期
-- 下一次复现轮次
-
-模板见 `templates/learning-state.md`。
-
-### 2. 明确的间隔复现
-
-错误项首次出现后，在未来 1–3 轮内复现；连续正确后逐渐拉长到 2–4 轮、4–7 轮；连续 3 次跨语境正确后才进入 `mastered`。
-
-具体规则见 `references/progression-algorithm.md`。
-
-### 3. 可操作的难度自适应
-
-连续 2 轮至少 75% 句子无重大结构 / 逻辑错误，才允许小幅升级难度。
-
-如果一轮超过一半句子出现重大结构或逻辑错误，则保持或降低难度。
-
-## 使用
-
-### ChatGPT / Claude Project
-
-1. 将 `SKILL.md` 作为项目核心指令；
-2. 将 `references/` 和 `examples/` 作为参考文件；
-3. 从 `templates/learning-state.md` 创建自己的学习状态文件；
-4. 每次“整理”后更新该文件；
-5. 新对话开始时重新提供当前学习状态。
-
-### Codex / 其他 Agent
-
-将仓库整体作为 Skill / instruction source 使用。只要 Agent 能读取 `SKILL.md` 和当前的 `learning-state.md`，就可以延续训练状态。
-
-## 常用指令
-
-- `开始训练`
-- `下一组`
-- `继续`
-- `讲一下这句`
-- `整理`
-- `给我写作题`
-- `批改一下`
-
-## 规则权威来源
-
-为避免不同文件之间出现规则漂移：
-
-- 错误标签与长期 Category 映射：`references/error-taxonomy.md`
-- 状态转换、间隔复现、复现配额、难度调度：`references/progression-algorithm.md`
-- 句子来源、主题与素材质量：`references/sentence-selection.md`
-- 词汇训练方法：`references/vocabulary-strategy.md`
-- 当前学习状态数据：`templates/learning-state.md`
-
-其余文件只引用这些规则，不重复定义。
-
-## 设计原则
-
-- 不依赖隐式长期记忆；
-- 默认不提前告诉长难句出处；
-- 默认不在出题阶段给提示；
-- 优先根据显式错误状态调整训练；
-- 写作遵循 `准确 > 清晰 > 自然 > 复杂`；
-- 主要用“重复错误是否减少”衡量效果。
 
 ## License
 
