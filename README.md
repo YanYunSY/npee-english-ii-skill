@@ -1,4 +1,4 @@
-# 考研英语二长难句写作训练 Skill
+# National Postgraduate Entrance Examination English (II) Assistant Skill
 
 ## Skill 简介
 
@@ -31,7 +31,7 @@
 ### Git
 
 ```bash
-git clone https://github.com/YanYunSY/kaoyan-english-2-skill.git
+git clone https://github.com/YanYunSY/national-postgraduate-entrance-examination-english-ii-skill.git
 ```
 
 ---
@@ -87,7 +87,7 @@ templates/
 将仓库克隆或下载到本地：
 
 ```bash
-git clone https://github.com/YanYunSY/kaoyan-english-2-skill.git
+git clone https://github.com/YanYunSY/national-postgraduate-entrance-examination-english-ii-skill.git
 ```
 
 在 Codex 中打开项目目录，并让 Codex 读取：
@@ -157,7 +157,7 @@ templates/
 ## 项目结构
 
 ```text
-kaoyan-english-2-skill/
+national-postgraduate-entrance-examination-english-ii-skill/
 ├── README.md
 ├── SKILL.md
 ├── templates/
