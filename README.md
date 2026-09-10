@@ -18,27 +18,31 @@
 
 ---
 
-## 安装方法
+## 安装
 
-### 下载 ZIP
+### 一键安装
+
+适用于 Codex、Claude Code 等支持 Agent Skills 的工具：
+
+```bash
+npx skills add YanYunSY/npee-english-ii-skill -g
+```
+
+按提示选择使用的工具。首次运行需要安装 Node.js。
+
+### 手动下载
 
 1. 点击 **Code**
 2. 选择 **Download ZIP**
 3. 解压文件
 
-无需安装 Git 或其他开发工具。
-
-### Git
-
-```bash
-git clone https://github.com/YanYunSY/npee-english-ii-skill.git
-```
+这种方式不需要 Git。
 
 ---
 
 ## 在 ChatGPT 中使用
 
-新建 Project，并上传：
+下载并解压后，新建 Project，并上传：
 
 ```text
 SKILL.md
@@ -67,7 +71,7 @@ templates/
 
 ## 在 Claude 中使用
 
-新建 Project，并添加：
+在 Claude Project 中添加：
 
 ```text
 SKILL.md
@@ -84,39 +88,33 @@ templates/
 
 ## 在 Codex 中使用
 
-将仓库克隆或下载到本地：
-
-```bash
-git clone https://github.com/YanYunSY/npee-english-ii-skill.git
-```
-
-在 Codex 中打开项目目录，并让 Codex 读取：
+完成一键安装后，新建对话并输入：
 
 ```text
-SKILL.md
-references/
-examples/
-templates/
+$npee-english-ii-skill 开始训练
 ```
 
-如已有学习状态文件，将其放入项目或一并提供。
+也可以直接输入“开始训练”，由 Codex 自动选择 Skill。
+
+如已有学习状态文件，将其一并提供。
 
 ---
 
 ## 在 DeepSeek Harness 中使用
 
-将仓库下载或克隆到本地，并作为工作目录或指令来源加载。
-
-确保 Harness 可以读取：
+将整个 Skill 文件夹放到项目目录：
 
 ```text
-SKILL.md
-references/
-examples/
-templates/
+.dsh/skills/npee-english-ii-skill/
 ```
 
-如已有学习状态文件，同时提供该文件。
+如需在所有项目中使用，可放到：
+
+```text
+~/.dsh/skills/npee-english-ii-skill/
+```
+
+重新开启会话后输入“开始训练”。如已有学习状态文件，同时提供该文件。
 
 ---
 
