@@ -20,15 +20,15 @@
 
 ## 安装
 
-### 一键安装
+### 项目内安装
 
-适用于 Codex、Claude Code 等支持 Agent Skills 的工具：
+在需要使用 Skill 的项目目录中运行：
 
 ```bash
-npx skills add YanYunSY/npee-english-ii-skill -g
+npx skills add YanYunSY/npee-english-ii-skill
 ```
 
-按提示选择使用的工具。首次运行需要安装 Node.js。
+安装后仅对当前项目生效。按提示选择使用的工具；首次运行需要安装 Node.js。
 
 ### 手动下载
 
@@ -88,7 +88,7 @@ templates/
 
 ## 在 Codex 中使用
 
-完成一键安装后，新建对话并输入：
+完成项目内安装后，新建对话并输入：
 
 ```text
 $npee-english-ii-skill 开始训练
@@ -106,12 +106,6 @@ $npee-english-ii-skill 开始训练
 
 ```text
 .dsh/skills/npee-english-ii-skill/
-```
-
-如需在所有项目中使用，可放到：
-
-```text
-~/.dsh/skills/npee-english-ii-skill/
 ```
 
 重新开启会话后输入“开始训练”。如已有学习状态文件，同时提供该文件。
